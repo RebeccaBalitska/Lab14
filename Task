@@ -1,0 +1,28 @@
+class TPrism:
+
+    def __init__(self, base_sides):
+        self.base_sides = base_sides
+
+    def area(self):
+        pass
+
+    def perimeter(self):
+        pass
+
+class TStraightPrism(TPrism):
+    def __init__(self, h, base_sides):
+        TPrism.__init__(self, base_sides)
+        self.h = h
+
+    def area(self):
+        p = sum(super().base_sides)
+        side_area = p * super().h
+        square_area = 1
+        half_p = p / 2
+        for i in super().base_sides:
+            el = half_p - i
+            square_area *= el
+        return (sqrt(square_area) * 2) + side_area
+
+    def perimeter(self):
+        return (sum(super().base_sides) * 2) + (super().h * len(super().base_sides))
